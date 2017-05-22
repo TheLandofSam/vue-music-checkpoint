@@ -1,18 +1,28 @@
 <template>
+ <div class="container-fluid">
   <div class="home">
     <!-- YOU WILL PROBABLY END UP WITH SOMETHING LIKE THIS -->
-    <my-tunes class="my-tunes"></my-tunes>
-    <itunes class="itunes"></itunes>
+    <div class="row">
+      <itunes class="itunes col-xs-8"></itunes>
+      <mytunes class="my-tunes col-xs-4"></mytunes>
+    </div>
   </div>
+ </div>
 </template>
 
 <script>
+import mytunes from './mytunes'
+import itunes from './itunes'
 export default {
   name: 'home',
   data () {
     return {
       
     }
+  },
+  components: {
+    mytunes,
+    itunes
   }
 }
 </script>
@@ -24,18 +34,15 @@ export default {
 * BOOTSTRAP IS FOR THE WEAK FLEXBOX IS KING
 * -- McCall
 **/
-.my-tunes{
-  display: inline-block;
-  min-height: 500px;
-  min-width: 50%;
-  background: purple;
+.itunes{
+ 
+  background: #809e9a;
 }
 
-.itunes{
-  display: inline-block;
-  background: pink;
-  min-height: 500px;
-  min-width: 45%;
+.my-tunes{
+ 
+  background: #6b83aa;
+  
 }
 
 </style>
