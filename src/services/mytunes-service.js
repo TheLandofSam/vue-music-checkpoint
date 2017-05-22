@@ -23,13 +23,13 @@ loadMytunes()
 export default {
   getTracks() {
     return myTunes.songs.sort(function(a, b){
-      return blur.votes - a.votes
+      return b.votes - a.votes
     })
    },
   addTrack(track) {
-    song.votes = 0
+    track.votes = 0 //------>this adds a vote property to the individual song added to the mytunes array, now, see if you can sort or something on this property. Need to set up an increment on this prop too!
     myTunes.songs.push(track)
-    myTunes.sort(function(a,b){
+    myTunes.songs.sort(function(a, b){
       return b.votes - a.votes
     })
     // OCCASIONALLY YOU WILL RUN INTO ISSUES WHERE VUE WILL BE
