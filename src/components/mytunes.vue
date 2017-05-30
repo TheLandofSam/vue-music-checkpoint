@@ -29,27 +29,20 @@ export default {
   data(){
     return {
       songs: mytunes.getTracks()
-      
     }
   },
   computed:{},
   methods:{
     removeTrack(song){
-      mytunes.removeTrack(song)
-    },
-   promoteTrack(song) {
+     mytunes.removeTrack(song)
+     },
+    promoteTrack(song) {
      mytunes.promoteTrack(song)
-     this.mytunes = this.mytunes.sort(function(a, b){
-      return b.votes - a.votes
-     })
-    
     },
-  demoteTrack(song) { 
-    mytunes.demoteTrack(song)
+    demoteTrack(song) { 
+     mytunes.demoteTrack(song)
   }
-  },
-
-  components:{}
+  }
 }
 </script>
 
@@ -57,7 +50,7 @@ export default {
 <style scoped>
 h1 {
   text-align: center;
-  min-height: 80px;
+  min-height: 90px;
 }
 .img{
   max-height: 60px;

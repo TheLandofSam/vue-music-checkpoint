@@ -1,5 +1,3 @@
-//search and return
-
 <template>
   <div class="itunes">
     <h1 class="patrick">Meeewsik <img  class="img" src="http://www.free-icons-download.net/images/halloween-scary-black-cat-icon-72554.png"></h1>
@@ -75,7 +73,7 @@ export default {
 
 h1 {
   text-align: center;
-  min-height: 50px;
+  min-height: 56px;
 }
 
 .w3-button{

@@ -22,48 +22,44 @@ loadMytunes()
 
 export default {
   getTracks() {
-    return myTunes.songs.sort(function(a, b){
+    return myTunes.songs.sort(function(a,b){
       return b.votes - a.votes
     })
    },
-  addTrack(track) {
-    track.votes = 0 //------>this adds a vote property to the individual song added to the mytunes array, now, see if you can sort or something on this property. Need to set up an increment on this prop too!
-    myTunes.songs.push(track)
-    myTunes.songs.sort(function(a, b){
-      return b.votes - a.votes
-    })
+  addTrack(song) {
+    song.votes = 0 //------>this adds a vote property to the individual song added to the mytunes array, now, see if you can sort or something on this property. Need to set up an increment on this prop too!
+    myTunes.songs.push(song)
+    //myTunes.songs.sort(function(a, b){
+      //return b.votes - a.votes
+    //})
     // OCCASIONALLY YOU WILL RUN INTO ISSUES WHERE VUE WILL BE
     // UNAWARE THAT A CHANGE HAS OCCURED TO YOUR DATA
     // TO ELIMINATE THIS PROBLEM YOU CAN USE 
-    Vue.set(myTunes, track.id, track)
+    Vue.set(myTunes, song.id, song)
     saveMytunes()
     // YOU CAN READ MORE ABOUT VUE.SET HERE
     // https://vuejs.org/v2/api/#Vue-set
    },
-  removeTrack(track) {
-    let index = myTunes.songs.indexOf(track)
+  removeTrack(song) {
+    let index = myTunes.songs.indexOf(song)
       myTunes.songs.splice(index, 1)
       saveMytunes()
     // how do yo look through and array and find a particular item of the array, use the index of that array to remove it, then call save my tunes
    },
-  promoteTrack(track) { 
-    let index = myTunes.songs.indexOf(track)
-    myTunes[index].votes-= 1
+  promoteTrack(song) { //look at code foo 3698
+    let index = myTunes.songs.indexOf(song)
+    myTunes.songs[index].votes += 1
+    this.getTracks()
     saveMytunes()
-  
-  },
-  demoteTrack(track) { 
-    let index = myTunes.songs.indexOf(track)
-    myTunes[index].votes += 1
-    saveMytunes()
-  }
+     
+    },
+  demoteTrack(song) { 
+    let index = myTunes.songs.indexOf(song)
+    if(myTunes.songs[index].votes > 0){
+      myTunes.songs[index].votes -= 1
+    }
+    this.getTracks()
+     saveMytunes()
+}
 }
 
-//---> promote/demote not working. Promote keeps giving error "cannot read property 'votes' of undefined" need to fix this...maybe this is all wrong? Is there another way? So fuking lost...
-
-
-
-//var vote = 0 //on button increment this element
-//myTunes.songs.indexOf(song) == vote
-//saveMytunes()
-//set value to something then sort on it.
